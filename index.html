@@ -38,6 +38,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="/pages/classes.html">Classes</a>
               </li>
+              </li>
             </ul>
           </div>
         </div>
@@ -49,9 +50,8 @@
             <div class="card-body">
               <h3>Welcome to High Street Gym!</h3>
               <h5>We offer a wide range of classes and blog to commuincate with your peers.</h5>
-              <p>Use links below to enter the blog or sign up for classes!</p>
+              <p>Login or continue as a guest</p>
             </div>
-          </div>
         <div class="card">
             <div class="card-body">
               <h3>Class List</h3>
@@ -67,10 +67,20 @@
               <p>Use links below to enter the blog or sign up for classes!</p>
             </div>
           </div>
-      
-          <button type="button" class="btn btn-secondary" href="/pages/blog.html">To Blog</button> <!--Remember to link buttons!!!-->
-          <button type="button" class="btn btn-secondary" href="/pages/classes.html"> To Classes</button>
+          <a class="btn btn-secondary" href="/pages/blog.html" role="button"> To Blog</a>
+          <a class="btn btn-secondary" href="/pages/classes.html" role="button"> To Classes</a>
         </div>
+        <form>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"></span>
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
     </main>
     <footer>
