@@ -55,8 +55,8 @@
             <p>Use links below to enter the blog or sign up for classes!</p>
           </div>
         </div>
-        <a class="btn btn-secondary" href="/pages/blog.php" role="button"> To Blog</a>
-        <a class="btn btn-secondary" href="/pages/classes.php" role="button"> To Classes</a>
+        <a class="btn btn-secondary" href="../High-Street-Gym/pages/blog.php" role="button"> To Blog</a>
+        <a class="btn btn-secondary" href="../High-Street-Gym/pages/classes.php" role="button"> To Classes</a>
       </div>
       <form action="includes\login.inc.php" method="post">
         <div class="input-group mb-3">
