@@ -2,7 +2,7 @@
 
 # data base handler connecting web application to the database
 
-$dsn = "mysql:host=localhost;dbname=mobile_hour";
+$dsn = "mysql:host=localhost;dbname=high-street-gym";
 $dbusername = "root";
 $dbpassword = "";
 
