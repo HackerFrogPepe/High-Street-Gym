@@ -38,8 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $sessionId = $newSessionId . "_" . $result["id"];
         session_id($sessionId);
 
-        $_SESSION["user_id"] = $result["id"];
-        $_SESSION["user_username"] = htmlspecialchars($result["username"]);
+        $_SESSION["user_id"] = $result["user_id"];
+        $_SESSION["username"] = htmlspecialchars($result["username"]);
 
         $_SESSION["last_regeneration"] = time();
 
@@ -55,3 +55,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     header("Location: ../index.php");
     die();
 }
+
+/*https://www.youtube.com/watch?v=XDz9SMYyTQo*/

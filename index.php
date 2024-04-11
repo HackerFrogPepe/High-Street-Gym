@@ -1,3 +1,8 @@
+<?php
+require_once 'includes/login_view.inc.php';
+require_once 'includes/config_session.inc.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,26 +65,27 @@
       </div>
       <?php
       if (!isset($_SESSION["user_id"])) { ?>
+        <h3>Login</h3>
+
         <form action="includes/login.inc.php" method="post">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="username"></span>
-            <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="password">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <input type="text" name="username" placeholder="Username">
+          <input type="password" name="password" placeholder="Password">
+          <button>Login</button>
         </form>
       <?php } ?>
-    </div>
+      <?php
+      output_username();
+      ?>
+      <?php
+      check_login_errors();
+      ?>
 
 
-    <h3>Logout</h3>
+      <h3>Logout</h3>
 
-    <form action="includes/logout.inc.php" method="post">
-      <button>Logout</button>
-    </form>
+      <form action="includes/logout.inc.php" method="post">
+        <button>Logout</button>
+      </form>
 
   </main>
   <footer>
