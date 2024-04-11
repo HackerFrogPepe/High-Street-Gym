@@ -58,18 +58,29 @@
         <a class="btn btn-secondary" href="../High-Street-Gym/pages/blog.php" role="button"> To Blog</a>
         <a class="btn btn-secondary" href="../High-Street-Gym/pages/classes.php" role="button"> To Classes</a>
       </div>
-      <form action="includes\login.inc.php" method="post">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1"></span>
-          <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      <?php
+      if (!isset($_SESSION["user_id"])) { ?>
+        <form action="includes/login.inc.php" method="post">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="username"></span>
+            <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="password">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      <?php } ?>
     </div>
+
+
+    <h3>Logout</h3>
+
+    <form action="includes/logout.inc.php" method="post">
+      <button>Logout</button>
+    </form>
+
   </main>
   <footer>
     <div class="card" <div class="card-body">

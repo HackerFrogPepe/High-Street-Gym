@@ -1,79 +1,57 @@
 <?php
-include "dbh.inc.php";
 
-session_start();
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
+    try {
+        require_once 'dbh.inc.php';
+        require_once 'login_model.inc.php';
+        require_once 'login_contr.inc.php';
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
+        // ERROR HANDLERS
+        $errors = [];
 
-    function validate($data)
-    {
-
-        $data = trim($data);
-
-        $data = stripslashes($data);
-
-        $data = htmlspecialchars($data);
-
-        return $data;
-    }
-
-    $uname = validate($_POST['username']);
-
-    $pass = validate($_POST['password']);
-
-    if (empty($uname)) {
-
-        header("Location: index.php?error=User Name is required");
-
-        exit();
-    } else if (empty($pass)) {
-
-        header("Location: index.php?error=Password is required");
-
-        exit();
-    } else {
-
-        $sql = "SELECT * FROM member WHERE user_name='$username' AND password='$user_password'";
-
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) === 1) {
-
-            $row = mysqli_fetch_assoc($result);
-
-            if ($row['user_name'] === $username && $row['password'] === $user_password) {
-
-                echo "Logged in!";
-
-                $_SESSION['user_name'] = $row['user_name'];
-
-                $_SESSION['name'] = $row['name'];
-
-                $_SESSION['id'] = $row['id'];
-
-                header("Location: home.php");
-
-                exit();
-            } else {
-
-                header("Location: index.php?error=Incorect User name or password");
-
-                exit();
-            }
-        } else {
-
-            header("Location: index.php?error=Incorect User name or password");
-
-            exit();
+        if (is_input_empty($username, $password)) {
+            $errors["empty_input"] = "Fill in all fields!";
         }
+
+        $result = get_user($pdo, $username);
+
+        if (is_username_wrong($result)) {
+            $errors["login_incorrect"] = "Incorrect login info!";
+        }
+        if (!is_username_wrong($result) && is_password_wrong($password, $result["password"])) {
+            $errors["login_incorrect"] = "Incorrect login info!";
+        }
+
+        require_once 'config_session.inc.php';
+
+        if ($errors) {
+            $_SESSION["errors_login"] = $errors;
+
+            header("Location: ../index.php");
+            die();
+        }
+
+        $newSessionId = session_create_id();
+        $sessionId = $newSessionId . "_" . $result["id"];
+        session_id($sessionId);
+
+        $_SESSION["user_id"] = $result["id"];
+        $_SESSION["user_username"] = htmlspecialchars($result["username"]);
+
+        $_SESSION["last_regeneration"] = time();
+
+        header("Location: ../index.php?login=success");
+        $pdo = null;
+        $statement = null;
+
+        die();
+    } catch (PDOException $e) {
+        die("Query failed: " . $e->getMessage());
     }
 } else {
-
-    header("Location: index.php");
-
-    exit();
+    header("Location: ../index.php");
+    die();
 }
-
-
-//THROWs an error due to currently unknown reasons, need help from more experienced developer.
