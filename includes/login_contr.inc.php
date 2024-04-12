@@ -20,9 +20,9 @@ function is_username_wrong(bool|array $result)
     }
 }
 
-function is_password_wrong(string $password)
+function is_password_wrong(string $password, string $db_password)
 {
-    if ($password === $password) {
+    if (!password_verify($password, $db_password)) {
         return true;
     } else {
         return false;

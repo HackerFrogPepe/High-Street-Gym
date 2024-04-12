@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (is_username_wrong($result)) {
             $errors["login_incorrect"] = "Incorrect login info!";
         }
-        if (!is_username_wrong($result) && is_password_wrong($password, $result["password"])) {
+        if (is_username_wrong($result) && is_password_wrong($password, $result["password"])) {
             $errors["login_incorrect"] = "Incorrect login info!";
         }
 
