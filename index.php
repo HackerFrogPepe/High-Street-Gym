@@ -100,6 +100,3 @@ require_once 'includes/config_session.inc.php'
 </body>
 
 </html>
-
-<!--https://www.simplilearn.com/tutorials/php-tutorial/php-login-form-->
-<!--To show cameron working version https://github.com/HackerFrogPepe/High-Street-Gym-->
