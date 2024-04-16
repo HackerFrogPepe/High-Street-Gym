@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +19,7 @@
           <h3>You are currently at the Blog page!</h3>
           <p>Interact with other members or checkout our classes page!</p>
         </div>
+        <?php include_once('../includes/blog.inc.php') ?>
       </div>
       <a class="btn btn-secondary" href="classes.php" role="button"> To Classes</a>
     </div>
