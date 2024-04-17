@@ -20,19 +20,25 @@ if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
 <?php
 echo '<h3>Class List</h3>';
 
-try {
-    require_once('dbh.inc.php');
-    $query = 'SELECT * FROM classlist';
-    $rows = $pdo->query($query);
-    $rows = $rows->fetchAll();
-    $errors = $pdo->errorInfo();
-    if (isset($errors[2])) {
-        print_r($errors);
-    }
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
-if (!isset($errors[2])) {
-    print_r($rows);
-    //Can format if required
-}
+require_once('dbh.inc.php');
+$query = 'SELECT trainer_first_name, class_name, class_time FROM classlist';
+$rows = $pdo->query($query);
+$result = $rows->fetchAll();
+echo "<table class='table table-striped'>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>Trainer</th>";
+echo "<th>Class Name</th>";
+echo "<th>Class Time</th>";
+echo "</tr>";
+echo "</thead>";
+foreach ($result as $rows) :
+    echo "<tbody>";
+    echo "<tr>";
+    echo "<td>" . $rows['trainer_first_name'] . "</td>";
+    echo "<td>" . $rows['class_name'] . "</td>";
+    echo "<td>" . $rows['class_time'] . "</td>";
+    echo "</tr>";
+    echo "</tbody>";
+endforeach;
+echo "</table>";

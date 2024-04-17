@@ -18,19 +18,25 @@ if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
 <?php
 echo '<h3>Blog user posts</h3>';
 
-try {
-    require_once('dbh.inc.php');
-    $query = 'SELECT * FROM blog';
-    $rows = $pdo->query($query);
-    $rows = $rows->fetchAll();
-    $errors = $pdo->errorInfo();
-    if (isset($errors[2])) {
-        print_r($errors);
-    }
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
-if (!isset($errors[2])) {
-    print_r($rows);
-    //Can format if required
-}
+require_once('dbh.inc.php');
+$query = 'SELECT title, content, posted FROM blog';
+$rows = $pdo->query($query);
+$result = $rows->fetchAll();
+echo "<table class='table table-striped'>";
+echo "<thead>";
+echo "<tr>";
+echo "<th>Title</th>";
+echo "<th>Content</th>";
+echo "<th>Posted</th>";
+echo "</tr>";
+echo "</thead>";
+foreach ($result as $rows) :
+    echo "<tbody>";
+    echo "<tr>";
+    echo "<td>" . $rows['title'] . "</td>";
+    echo "<td>" . $rows['content'] . "</td>";
+    echo "<td>" . $rows['posted'] . "</td>";
+    echo "</tr>";
+    echo "</tbody>";
+endforeach;
+echo "</table>";
