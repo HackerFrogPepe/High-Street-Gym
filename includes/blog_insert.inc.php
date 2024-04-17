@@ -1,12 +1,14 @@
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
+<?php session_start();
+
+if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
+    echo ('here');
     $content = $_POST['content'];
     $title = $_POST['title'];
 
     require_once "dbh.inc.php";
 
     $query = "INSERT INTO blog (content, title)
-                    VALUES (:content, :title)";
+VALUES (:content, :title)";
 
     // Prepare the statement
     $stmt = $pdo->prepare($query);
@@ -20,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && !isse
     $stmt->execute();
 
     // Send the user back to the front page
-    header(" Location: ../pages/blog.php");
+    header("Location: ../pages/blog.php");
 
     // Close the connection and statement
     $pdo = null;

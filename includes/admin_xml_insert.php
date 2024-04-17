@@ -1,6 +1,6 @@
 
     <?php
-    if (isset($_SESSION['user_id']) && isset($_SESSION['admin'])) {
+    if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
         echo "Welcome to the member's area, " . htmlspecialchars($_SESSION['username']) . "!";
     ?>
     <?php
