@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_SESSION['user_id']) && !isse
     $stmt->execute();
 
     // Send the user back to the front page
-    header(" Location: ../index.php");
+    header(" Location: ../pages/blog.php");
 
     // Close the connection and statement
     $pdo = null;

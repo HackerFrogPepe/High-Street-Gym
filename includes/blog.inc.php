@@ -12,7 +12,7 @@ if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
     </form>
 <?php
 } else {
-    echo "Please log in first to see this page.";
+    echo "Please log in to interact with this feature.";
 }
 ?>
 <?php
