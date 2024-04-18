@@ -1,27 +1,28 @@
 <?php session_start();
 
 if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
-    $content = $_POST['content'];
-    $title = $_POST['title'];
+    echo ('here');
+    $classname = $_POST['class_name'];
+    $username = $_POST['username'];
 
     require_once "dbh.inc.php";
 
-    $query = "INSERT INTO blog (content, title)
-    VALUES (:content, :title)";
+    $query = "INSERT INTO bookings (class_name, username)
+    VALUES (:classname, :username)";
 
     // Prepare the statement
     $stmt = $pdo->prepare($query);
 
     // Bind values to placeholders
-    $stmt->bindParam(':content', $content);
-    $stmt->bindParam(':title', $title);
+    $stmt->bindParam(':classname', $classname);
+    $stmt->bindParam(':username', $username);
 
 
     // Execute the statement
     $stmt->execute();
 
     // Send the user back to the front page
-    header("Location: ../pages/blog.php");
+    header("Location: ../pages/classes.php");
 
     // Close the connection and statement
     $pdo = null;
