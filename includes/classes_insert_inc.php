@@ -2,18 +2,22 @@
 
 if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
     echo ('here');
+    $class_id = $_POST['class_id'];
+    $user_id = $_POST['user_id'];
     $classname = $_POST['class_name'];
     $username = $_POST['username'];
 
     require_once "dbh.inc.php";
 
-    $query = "INSERT INTO bookings (class_name, username)
-    VALUES (:classname, :username)";
+    $query = "INSERT INTO bookings (class_id, user_id, class_name, username)
+    VALUES (:class_id, :user_id, :classname, :username)";
 
     // Prepare the statement
     $stmt = $pdo->prepare($query);
 
     // Bind values to placeholders
+    $stmt->bindParam(':class_id', $class_id);
+    $stmt->bindParam(':user_id', $user_id);
     $stmt->bindParam(':classname', $classname);
     $stmt->bindParam(':username', $username);
 

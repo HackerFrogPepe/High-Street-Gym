@@ -86,7 +86,7 @@ require_once 'includes/config_session.inc.php'
       <form action="includes/logout.inc.php" method="post">
         <button>Logout</button>
       </form>
-      <?php include_once('includes/admin_xml_insert.php') ?>
+      <?php include_once('includes/admin_xml_button.php') ?>
   </main>
   <footer>
     <div class="card" <div class="card-body">
