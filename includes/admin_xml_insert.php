@@ -1,47 +1,43 @@
-
-<?php
-echo "beat it loser";
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    require_once 'dbh.inc.php';
+<?php 
 
 
-    // ERROR HANDLERS
-    $errors = [];
 
-    if (is_input_empty($username, $password)) {
-        $errors["empty_input"] = "Fill in all fields!";
-    }
+// require_once('dbh.inc.php');
+// $query = 'SELECT admin FROM users';
+// $rows = $pdo->query($query);
+// $result = $rows->fetchAll();
 
-    $result = get_user($pdo, $username);
+// print_r($result);
 
-    if (is_username_wrong($result)) {
-        $errors["login_incorrect"] = "Incorrect login info!";
-    }
-    if (is_username_wrong($result) && is_password_wrong($password, $result["password"])) {
-        $errors["login_incorrect"] = "Incorrect login info!";
-    }
+// if (isset($result['admin[0]'])) {
+// echo "yes boss";
+// };
 
-    if ($errors) {
-        $_SESSION["errors_login"] = $errors;
 
-        header("Location: ../index.php");
-        die();
-    }
-} else {
-    header("Location: ../index.php");
-    die();
-}
+
+
+
+
+// if (isset($_SERVER['admin'])) {
+// if ($_SERVER['admin'] == 1) {
+// echo "admin logged in";
+// } else {
+// echo "not working as intended";
+// // header("Location: ../index.php");
+// // die();
+// }
+// }
+
+
+
 
 //TO DO
-//redirect if not using post method
+//redirect if not using post method or admin
 //set up password and username that reads from database as verification on page
 //create xml uploads for classes and blog/users
-//fix Class upload
+
 //hash passwords uing sha(p352)
 
 //DONE
 //fix db foreign keys (DONE)
+//fix Class upload (DONE)
