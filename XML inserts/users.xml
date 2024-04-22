@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<high_street_gym>
+  <user>
+    <user_id>3</user_id>
+    <first_name>John</first_name>
+    <last_name>Doe</last_name>
+    <username>Johnny</username>
+    <admin>0</admin>
+    <password>1234</password>
+  </user>
+</high_street_gym>

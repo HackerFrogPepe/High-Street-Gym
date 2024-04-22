@@ -1,7 +1,3 @@
-<?php 
-
-
-
 // require_once('dbh.inc.php');
 // $query = 'SELECT admin FROM users';
 // $rows = $pdo->query($query);
