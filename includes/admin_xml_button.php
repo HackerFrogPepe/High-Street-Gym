@@ -1,5 +1,5 @@
 <?php
-if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
+if (isset($_SESSION['user_id']) && ($_SESSION['is_admin'] == 1)) {
     echo "Click here to upload an XML document " . htmlspecialchars($_SESSION['username']) . "!";
 ?>
     <h2>Add classes from XML File</h2>
