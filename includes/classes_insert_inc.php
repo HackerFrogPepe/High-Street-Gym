@@ -1,7 +1,6 @@
 <?php session_start();
 
 if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
-    echo ('here');
     $class_id = $_POST['class_id'];
     $user_id = $_POST['user_id'];
     $classname = $_POST['class_name'];

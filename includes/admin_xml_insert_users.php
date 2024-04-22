@@ -3,29 +3,38 @@ include_once("../includes/dbh.inc.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xml_file'])) {
     $xmlFile = $_FILES['xml_file']['tmp_name'];
-    $xml = simplexml_load_file($xmlFile) or die("ERROR: Cannot create SimpleXML object");
+    $xml = simplexml_load_file($xmlFile);
 
     try {
-        $connection = $pdo("localhost", "root", "", "high_street_gym") or die("ERROR: Cannot connect");
+        foreach ($xml->user as $user) {
+            $user_id = $user->id;
 
-        foreach ($xml->User as $User) {
-            $id = $User->id;
-            echo "$id";
-            $first_name =  $User->first_name;
-            $last_name = $Customer->last_name;
-            $username = $Customer->username;
-            $admin = $Customer->admin;
-            $password = $Customer->password;
+            $stmt = $pdo->prepare("SELECT user_id FROM users WHERE user_id = :user_id");
+            $stmt->bindParam(':user_id', $user_id);
+            $stmt->execute();
+            // Fetch the results
+            $pk_result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($pk_result) {
+                continue;
+            }
 
-            $sql = "INSERT INTO users (id, first_name, last_name, admin, password) VALUES ('$id, $first_name, $last_name, $username, $admin, $password')";
+            $first_name = $user->last_name;
+            $last_name = $user->last_name;
+            $username = $user->username;
+            $_admin = $user->admin;
+            $_password = $user->password;
 
-            mysqli_query($connection, $sql) or die("ERROR: " . mysqli_error($connection) . " (query was $sql)"); //is there a pdo equivilant?
+            $stmt = $pdo->prepare("INSERT INTO users (user_id, first_name, last_name, username, admin, password) VALUES ('$user_id, $first_name, $last_name, $username, $admin, $password')");
+            $stmt->bindParam(':first_name', $first_name);
+            $stmt->bindParam(':last_name', $last_name);
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':admin', $admin);
+            $stmt->bindParam(':password', $password);;
+            $stmt->execute();
         }
-        mysqli_close($connection);
-
 
         header("Location: ../index.php");
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-};
+}
