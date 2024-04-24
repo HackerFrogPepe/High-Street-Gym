@@ -1,10 +1,12 @@
 <?php
 include_once("../includes/dbh.inc.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xml_file'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $xmlFile = $_FILES['xml_file']['tmp_name'];
     $xml = simplexml_load_file($xmlFile);
+    echo ($xml);
 
+    echo "hello";
     try {
         foreach ($xml->user as $user) {
             $user_id = $user->id;
@@ -33,7 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xml_file'])) {
             $stmt->execute();
         }
 
-        header("Location: ../index.php");
+        //SHOULD UPLOAD TO DATABASE OR RETURN FEEDBACK...
+
+        // header("Location: ../index.php");
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

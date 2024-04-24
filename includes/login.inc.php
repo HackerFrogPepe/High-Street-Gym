@@ -40,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["username"] = htmlspecialchars($result["username"]);
         $_SESSION['is_admin'] = $result['admin'];
 
+
         $_SESSION["last_regeneration"] = time();
 
         header("Location: ../index.php?login=success");

@@ -43,3 +43,17 @@ foreach ($result as $rows) :
     echo "</tbody>";
 endforeach;
 echo "</table>";
+?>
+<div>
+    <a class="btn btn-primary" href="../class_inserts/yoga.php" role="button">Yoga signup</a>
+    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
+    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
+    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
+    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
+    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
+    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
+</div>
+<br><br><br><br>
+
+1. apply button using img to classes //coffeetime from cameron
+2. fix xml upload should be close
