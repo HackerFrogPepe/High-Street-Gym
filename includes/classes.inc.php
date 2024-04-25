@@ -2,15 +2,6 @@
 if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
     echo "Welcome to the member's area, " . htmlspecialchars($_SESSION['username']) . "!";
 ?>
-    <h3>Book a class here!</h3>
-
-    <form action="../includes/classes_insert_inc.php" method="post">
-        <input type="text" name="class_id" placeholder="Class Id">
-        <input type="text" name="user_id" placeholder="User Id">
-        <input type="text" name="username" placeholder="Username">
-        <input type="text" name="class_name" placeholder="Classname">
-        <button>Book</button>
-    </form>
 <?php
 } else {
     echo "Please log in to interact with this feature.";
@@ -44,16 +35,8 @@ foreach ($result as $rows) :
 endforeach;
 echo "</table>";
 ?>
-<div>
-    <a class="btn btn-primary" href="../class_inserts/yoga.php" role="button">Yoga signup</a>
-    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
-    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
-    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
-    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
-    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
-    <a class="btn btn-primary" href="blog.php" role="button"> To Blog</a>
-</div>
-<br><br><br><br>
+<a class="btn btn-primary" href='../class_inserts/yoga.php' role="button">Yoga signup</a>
 
-1. apply button using img to classes //coffeetime from cameron
-2. fix xml upload should be close
+
+<!-- 1. apply button using img to classes //coffeetime from cameron
+2. fix xml upload should be close -->

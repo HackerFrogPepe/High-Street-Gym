@@ -1,27 +1,23 @@
+
 <?php session_start();
+require_once("../includes/dbh.inc.php");
 
-if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
-    $booking_id = 1;
-    $class_id = 1;
+echo "cunt";
+if (isset($_SESSION['user_id']) && (isset($_SESSION['is_class_id']))) {
+    $class_id = $_SESSION['class_id'];
     $user_id = $_SESSION['user_id'];
-    $class_name = "yoga";
-    $username = $_SESSION['username'];
 
-    require_once "../includes/dbh.inc.php";
 
-    $query = "INSERT INTO bookings (booking_id, class_id, user_id, class_name, username)
-    VALUES (:booking_id,:class_id, :user_id :class_name, :username)";
+
+    $query = "INSERT INTO bookings (class_id, user_id)
+    VALUES (:class_id, :user_id)";
 
     // Prepare the statement
     $stmt = $pdo->prepare($query);
 
     // Bind values to placeholders
-
-    $stmt->bindValue(':booking_id', $booking_id);
-    $stmt->bindValue(':class_id', $class_id);
-    $stmt->bindValue(':user_id', $user_id);
-    $stmt->bindValue(':class_name', $class_name);
-    $stmt->bindValue(':username', $username);
+    $stmt->bindParam(':class_id', $class_id);
+    $stmt->bindParam(':user_id', $user_id);
 
 
     // Execute the statement
@@ -36,5 +32,6 @@ if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
 
     die();
 } else {
+    header("Location: ../pages/classes.php");
     die();
 }
