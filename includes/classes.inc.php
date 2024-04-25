@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION['user_id']) && !isset($_SESSION['admin'])) {
-    echo "Welcome to the member's area, " . htmlspecialchars($_SESSION['username']) . "!";
+    echo "Welcome to the member's area, " . htmlspecialchars($_SESSION['username'] . " " . "your USER ID is " . htmlspecialchars($_SESSION['user_id'])) . "!";
 ?>
     <h3>Book a class here!</h3>
 
