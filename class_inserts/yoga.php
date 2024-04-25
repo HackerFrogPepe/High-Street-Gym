@@ -2,7 +2,7 @@
 <?php session_start();
 require_once("../includes/dbh.inc.php");
 
-echo "cunt";
+echo "DOESNT CONNECT.........";
 if (isset($_SESSION['user_id']) && (isset($_SESSION['is_class_id']))) {
     $class_id = $_SESSION['class_id'];
     $user_id = $_SESSION['user_id'];
