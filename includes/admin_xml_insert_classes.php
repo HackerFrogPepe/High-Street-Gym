@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
         }
 
-        //SHOULD UPLAD TO DATABASE OR RETURN FEEDBACK...
+        header("Location: ../index.php");
 
         // header("Location: ../index.php");
     } catch (PDOException $e) {
