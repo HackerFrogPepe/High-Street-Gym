@@ -15,12 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $class_time = $classlist->class_time;
 
 
-            $stmt = $pdo->prepare("INSERT INTO classlist ('class_id','trainer_first_name', 'trainer_last_name', 'class_name', 'class_time') VALUES ('$class_id, $trainer_first_name, $trainer_last_name, $class_name, $class_time')");
-            $stmt->bindValue(':class_id', $class_id);
-            $stmt->bindValue(':trainer_first_name', $trainer_first_name);
-            $stmt->bindValue(':trainer_last_name', $trainer_last_name);
-            $stmt->bindValue(':class_name', $class_name);
-            $stmt->bindValue(':class_time', $class_time);
+            $stmt = $pdo->prepare("INSERT INTO classlist (class_id,trainer_first_name, trainer_last_name, class_name, class_time) VALUES (:class_id, :trainer_first_name, :trainer_last_name, :class_name, :class_time)");
+            $stmt->bindParam(':class_id', $class_id);
+            $stmt->bindParam(':trainer_first_name', $trainer_first_name);
+            $stmt->bindParam(':trainer_last_name', $trainer_last_name);
+            $stmt->bindParam(':class_name', $class_name);
+            $stmt->bindParam(':class_time', $class_time);
             $stmt->execute();
         }
 
