@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE high_street_gym [
-  <!ELEMENT high_street_gym (#PCDATA)>
+  <!ELEMENT high_street_gym (user)>
   <!ELEMENT user (user_id, first_name, last_name, username,admin,password)>
   <!ELEMENT user_id (#PCDATA)>
   <!ELEMENT first_name (#PCDATA)>
