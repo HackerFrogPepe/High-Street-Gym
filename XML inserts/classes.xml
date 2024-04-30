@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE high_street_gym [
+  <!ELEMENT high_street_gym ( //WHAT DATA TYPE GOES HERE?)>
+  <!ELEMENT classlist (class_id, trainer_first_name, trainer_last_name,class_name, class_time)>
+  <!ELEMENT class_id (#PCDATA)>
+  <!ELEMENT trainer_first_name (#PCDATA)>
+  <!ELEMENT trainer_last_name (#PCDATA)>
+  <!ELEMENT class_name (#PCDATA)>
+  <!ELEMENT class_time (#PCDATA)>
+]>
 <high_street_gym>
   <classlist>
     <class_id>8</class_id>
